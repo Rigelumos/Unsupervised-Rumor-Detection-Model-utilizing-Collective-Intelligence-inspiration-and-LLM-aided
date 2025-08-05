@@ -49,9 +49,9 @@ def compute_attitude_distribution(comment_data):
             '质疑': attitude_count['质疑'] / total_comments,
             '中立': attitude_count['中立'] / total_comments
         }
-        score = attitude_percentages['质疑'] * (-5) + attitude_percentages['支持'] * 1
+        score = attitude_percentages['质疑'] * (a) + attitude_percentages['支持'] * b
         features.append([attitude_percentages['支持'], attitude_percentages['质疑'], attitude_percentages['中立']])
-        scores.append([attitude_percentages['支持'] * 2, attitude_percentages['质疑'] * (-5), attitude_percentages['中立']])
+        scores.append([attitude_percentages['支持'] * c, attitude_percentages['质疑'] * (a), attitude_percentages['中立']*c])
 
     return scores
 
