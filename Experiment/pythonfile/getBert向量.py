@@ -25,4 +25,3 @@ output_file_path = "output.json"
 with open(output_file_path, "w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
 
-print(f"结果已保存到 {output_file_path}")
