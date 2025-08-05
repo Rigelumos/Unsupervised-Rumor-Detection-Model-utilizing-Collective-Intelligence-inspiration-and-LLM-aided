@@ -4,7 +4,7 @@ import numpy as np
 import math
 import csv
 import pandas as pd
-from scipy.spatial.distance import euclidean
+from scipy.spatial.distance import cosine
 from sklearn.cluster import KMeans
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
