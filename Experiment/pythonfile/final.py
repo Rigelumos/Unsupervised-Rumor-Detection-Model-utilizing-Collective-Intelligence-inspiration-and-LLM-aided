@@ -4,7 +4,7 @@ import numpy as np
 import math
 import csv
 import pandas as pd
-from scipy.spatial.distance import euclidean, cosine
+from scipy.spatial.distance import cosine
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.cluster import KMeans
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
@@ -53,8 +53,8 @@ def get_answer(df, id):
 
     for index, row in df.iterrows():
         if row['id'] != id:
-            text_distance = euclidean(beacon_text, row['text_embedding'])
-            attitude_distance = euclidean(beacon_attitude, row['attitude'])
+            text_distance = cosine_similarity(beacon_text, row['text_embedding'])
+            attitude_distance = cosine_similarity(beacon_attitude, row['attitude'])
             
             if row['sentiment'] == "质疑":
                 sentiment_distance = cosine_similarity(beacon_doubt, row['embedding'])
@@ -170,7 +170,7 @@ for beacon_id in id_list:
     print("真实标签:", true_labels)
     print("预测标签:", predicted_labels)
 
-output_file = "/home/user1809/RenSifei/pythonFile/新实验/数据集/checked/多维度/metrics_attitude_topic0.csv"
+output_file = "output.csv"
 with open(output_file, mode="w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
     writer.writerow(["id", "accuracies", "precisions", "f1s", "recalls"])
