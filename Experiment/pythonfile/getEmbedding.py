@@ -42,5 +42,3 @@ for item in data:
 
 with open('fake_embedding.json', 'w', encoding='utf-8') as file:
     json.dump(data, file, ensure_ascii=False, indent=4)
-
-print("Embedding 已生成并保存。")
