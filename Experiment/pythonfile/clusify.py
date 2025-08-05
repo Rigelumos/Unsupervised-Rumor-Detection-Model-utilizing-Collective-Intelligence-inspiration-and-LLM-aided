@@ -1,5 +1,5 @@
 import json
-from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import math
 import csv
@@ -32,14 +32,14 @@ def get_answer(df, id):
 
     for index, row in df.iterrows():
         if row['id'] != id:
-            text_distance = euclidean(beacon_text, row['text_embedding'])
-            attitude_distance = euclidean(beacon_attitude, row['attitude'])
+            text_distance = cosine_similarity(beacon_text, row['text_embedding'])
+            attitude_distance = cosine_similarity(beacon_attitude, row['attitude'])
             if row['sentiment'] == "质疑":
-                sentiment_distance = euclidean(beacon_doubt, row['embedding'])
+                sentiment_distance = cosine_similarity(beacon_doubt, row['embedding'])
             elif row['sentiment'] == "中立":
-                sentiment_distance = euclidean(beacon_neutral, row['embedding'])
+                sentiment_distance = cosine_similarity(beacon_neutral, row['embedding'])
             elif row['sentiment'] == "支持":
-                sentiment_distance = euclidean(beacon_support, row['embedding'])
+                sentiment_distance = cosine_similarity(beacon_support, row['embedding'])
             df.at[index, 'text_distance'] = text_distance
             df.at[index, 'attitude_distance'] = attitude_distance
             df.at[index, 'sentiment_distance'] = sentiment_distance
