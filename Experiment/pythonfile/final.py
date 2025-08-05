@@ -142,7 +142,7 @@ def get_answer(df, id):
     print("F1-得分(F1-Score):", f1)
     return true_labels, predicted_labels
     
-input_file = "/home/user1809/RenSifei/pythonFile/新实验/数据集/checked/多维度/topic0.json"
+input_file = "input.json"
 
 with open(input_file, 'r', encoding="utf-8") as f:
     data = json.load(f)
